@@ -74,11 +74,9 @@ class Main extends React.Component {
     this.setState({
       isLoading: true
     })
-    console.log('SUBMIT', this.state.username)
     // fetch data from Github
     api.getBio(this.state.username)
       .then((res) => {
-        console.log(res)
         if(res.message === 'Not Found'){
           this.setState({
             error: "找不到目标用户",

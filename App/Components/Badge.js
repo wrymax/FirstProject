@@ -27,6 +27,12 @@ var styles = StyleSheet.create({
 });
 
 class Badge extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isLoading: false
+    }
+  }
 
   render() {
     return (

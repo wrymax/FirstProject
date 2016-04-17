@@ -1,5 +1,7 @@
 import React, { View, Text, StyleSheet, Image, TouchableHighlight } from 'react-native'
 import Profile from './Profile'
+import Repositories from './Repositories'
+import api from '../Utils/api'
 
 var styles = StyleSheet.create({
   container: {
@@ -17,7 +19,7 @@ var styles = StyleSheet.create({
   scrollView: {
     backgroundColor: '#6A85B1',
     height: 300,
-  },
+  }
 })
 
 class Dashboard extends React.Component {
@@ -45,14 +47,21 @@ class Dashboard extends React.Component {
     this.props.navigator.push({
       title: "用户资料",
       component: Profile,
-      passProps: { userInfo }
+      passProps: { userInfo}
     });
   }
   goToRepos() {
-
-  }
-  goToNotes() {
-
+    const { userInfo } = this.props
+    // fetch data from Github
+    api.getRepos(userInfo.login)
+      .then((res) => {
+        console.log('Repos:', res)
+        this.props.navigator.push({
+          title: "代码库",
+          component: Repositories,
+          passProps: { userInfo, repos: res }
+        })
+      });    
   }
 
   render() {
@@ -74,13 +83,6 @@ class Dashboard extends React.Component {
           onPress={ this.goToRepos.bind(this) } 
           underlayColor='#88D4F5'>  
           <Text style={ styles.buttonText }> 代码库 </Text>
-        </TouchableHighlight>
-
-        <TouchableHighlight
-          style={ this.makeBackground(2) }
-          onPress={ this.goToNotes.bind(this) } 
-          underlayColor='#88D4F5'>  
-          <Text style={ styles.buttonText }> View Notes </Text>
         </TouchableHighlight>
 
       </View>    
