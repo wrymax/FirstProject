@@ -8,6 +8,7 @@
   "dependencies": {
     "babel-preset-react-native-stage-0": "^1.0.1",
     "react": "^0.14.8",
-    "react-native": "^0.23.1"
+    "react-native": "^0.23.1",
+    "react-native-overlay": "^0.4.2"
   }
 }

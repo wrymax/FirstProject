@@ -3,6 +3,10 @@ import Profile from './Profile'
 import Repositories from './Repositories'
 import api from '../Utils/api'
 
+// import Overlay from 'react-native-overlay'
+// import { BlurView } from 'react-native-blur'
+// var BlurView = require('react-native-blur').BlurView;
+
 var styles = StyleSheet.create({
   container: {
     marginTop: 65,
